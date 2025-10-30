@@ -5,24 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class ProdutoController extends Controller
+class CategoriaController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::all();
-        return view('produtos', compact('produtos'));
+        $categorias = Categoria::all();
+        return view('categorias', compact('categorias'));
     }
 
     public function store(Request $request)
     {
+        // Validação dos dados
         $request->validate([
-            'nome' => 'required|string|max:255',
-            'descricao' => 'nullable|string',
-            'preco' => 'required|numeric|min:0',
+            'nome' => 'required|string|max:255|unique:categorias',
+            'descricao' => 'nullable|string|max:500',
         ]);
 
-        Produto::create($request->all());
+        // Criar a categoria no banco de dados
+        Categoria::create([
+            'nome' => $request->nome,
+            'descricao' => $request->descricao,
+        ]);
 
-        return redirect('/produtos')->with('success', 'Produto cadastrado com sucesso!');
+        // Redirecionar de volta com mensagem de sucesso
+        return redirect('/categorias')->with('success', 'Categoria cadastrada com sucesso!');
     }
 }
