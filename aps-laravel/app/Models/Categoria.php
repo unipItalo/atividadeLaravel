@@ -9,15 +9,20 @@ class Categoria extends Model
 {
     use HasFactory;
 
-    // Campos que podem ser preenchidos em massa
     protected $fillable = [
         'nome',
-        'descricao'
+        'descricao',
+        'imagem'
     ];
 
-    // Campos que devem ser escondidos na serialização
     protected $hidden = [
         'created_at',
         'updated_at',
     ];
+
+    // Relacionamento com produtos (opcional)
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class);
+    }
 }

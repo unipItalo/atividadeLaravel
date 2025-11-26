@@ -13,7 +13,8 @@ class Produto extends Model
         'nome',
         'descricao',
         'preco',
-        'quantidade'
+        'quantidade',
+        'imagem'
     ];
 
     protected $hidden = [
@@ -21,13 +22,11 @@ class Produto extends Model
         'updated_at',
     ];
 
-    // Accessor para formatar o preço
     public function getPrecoFormatadoAttribute()
     {
         return 'R$ ' . number_format($this->preco, 2, ',', '.');
     }
 
-    // Accessor para status do estoque
     public function getStatusEstoqueAttribute()
     {
         if ($this->quantidade == 0) {
@@ -37,5 +36,11 @@ class Produto extends Model
         } else {
             return 'Em Estoque';
         }
+    }
+
+    // Relacionamento com categoria (opcional)
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
     }
 }
