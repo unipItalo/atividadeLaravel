@@ -1,1 +1,2 @@
-Trabalho Final - Laravel
+# Trabalho Final - Laravel
+Esse é o trabalho final da disciplina, todas as informações estão no arquivo PDF em anexo. O conteúdo aplicado nessa atividade estará na última prova da disciplina e na colegiada, consulte o material da apostila que foi atualizado recentemente e qualquer dúvida entrar em contato com o professor. O código do projeto deve estar disponível no GitHub ou GitLab ou BitBucket, em um repositório PÚBLICO para que o professor consiga acessar e ler tudo que foi implementado, não serão aceitas outras formas de entrega além da citada aqui. Então, favor colocar o link do repositório no campo de respostas da APS.
